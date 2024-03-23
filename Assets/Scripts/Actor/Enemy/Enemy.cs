@@ -14,6 +14,9 @@ public class Enemy : MonoBehaviour
     public GameObject bullet;
     public bool isAttack;
     public float detectionRange;
+    public LayerMask layerMask;
+
+    public GameObject DangerMarker;
 
     bool chaseStart;
     public bool isChase;
@@ -79,6 +82,24 @@ public class Enemy : MonoBehaviour
         } 
     }
 
+    void DangerMarkerShoot()
+    {
+        if(enemyType == Type.B)
+        {
+            GameObject DangerMarkerClone = Instantiate(DangerMarker, transform.position, transform.rotation);
+            Rigidbody rigidMarker = DangerMarkerClone.GetComponent<Rigidbody>();
+            rigidMarker.AddForce(transform.forward * 120, ForceMode.Impulse);
+        }
+        else
+        {
+            GameObject DangerMarkerClone = Instantiate(DangerMarker, transform.position, transform.rotation);
+            Rigidbody rigidMarker = DangerMarkerClone.GetComponent<Rigidbody>();
+            rigidMarker.velocity = transform.forward * 60;
+
+        }
+        
+    }
+
     IEnumerator Attack()
     {
         isChase = false;
@@ -95,6 +116,8 @@ public class Enemy : MonoBehaviour
                 break;
             case Type.B:
                 yield return new WaitForSeconds(0.5f);
+                DangerMarkerShoot();
+                yield return new WaitForSeconds(0.5f);
                 rigid.AddForce(transform.forward * 60, ForceMode.Impulse);
                 meleeArea.enabled = true;
                 yield return new WaitForSeconds(2.0f);
@@ -104,6 +127,8 @@ public class Enemy : MonoBehaviour
                 yield return new WaitForSeconds(3.0f);
                 break;
             case Type.C:
+                yield return new WaitForSeconds(0.5f);
+                DangerMarkerShoot();
                 yield return new WaitForSeconds(0.5f);
                 GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
