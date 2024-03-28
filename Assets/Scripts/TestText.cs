@@ -20,7 +20,7 @@ public class TestText : MonoBehaviour
     {
         if (player != null)
         {
-            Text.text = "HP : " + player._hp + "\n" + "Coin : " + player._coin;
+            Text.text = /*"HP : " + player._hp + "\n" +*/ "Coin : " + player._coin;
         }
     }
 }
