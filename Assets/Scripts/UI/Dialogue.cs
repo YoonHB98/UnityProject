@@ -1,0 +1,65 @@
+using System.Collections;
+using TMPro;
+using UnityEngine;
+
+public class Dialogue : MonoBehaviour
+{
+    public TMP_Text dialogueText;
+    private string[] dialogues;
+    private int currentIndex;
+
+    private void Awake()
+    {
+        dialogueText.text = "";
+        dialogues = new string[]
+        {
+            "첫 번째 대화입니다.",
+            "두 번째 대화입니다.",
+            "세 번째 대화입니다."
+        };
+    }
+
+    void Start()
+    {
+        currentIndex = 0;
+        StartCoroutine(ShowDialogue());
+        UIManager.instance.DisableUI();
+    }
+
+    void Update()
+    {
+        // 마우스 클릭을 감지하여 다음 대화로 넘어가기
+        if (Input.GetMouseButtonDown(0))
+        {
+            NextDialogue();
+        }
+    }
+
+    IEnumerator ShowDialogue()
+    {
+        // 현재 대화 텍스트를 한 글자씩 표시
+        foreach (char letter in dialogues[currentIndex].ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(0.1f); // 한 글자씩 표시되는 딜레이
+        }
+    }
+
+    void NextDialogue()
+    {
+        currentIndex++;
+        if (currentIndex < dialogues.Length)
+        {
+            StopAllCoroutines(); // 현재 진행 중인 대화 표시 코루틴 중지
+            dialogueText.text = ""; // 대화 텍스트 초기화
+            StartCoroutine("ShowDialogue");
+        }
+        else
+        {
+            Debug.Log("모든 대화가 종료되었습니다.");
+            GameManager.instance.TogglePause();
+            UIManager.instance.EnableUI();
+            Destroy(gameObject);
+        }
+    }
+}
