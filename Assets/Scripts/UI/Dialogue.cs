@@ -22,12 +22,14 @@ public class Dialogue : MonoBehaviour
     void Start()
     {
         currentIndex = 0;
+        Time.timeScale = 1;
         StartCoroutine(ShowDialogue());
         UIManager.instance.DisableUI();
     }
 
     void Update()
     {
+
         // 마우스 클릭을 감지하여 다음 대화로 넘어가기
         if (Input.GetMouseButtonDown(0))
         {
@@ -41,7 +43,7 @@ public class Dialogue : MonoBehaviour
         foreach (char letter in dialogues[currentIndex].ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(0.1f); // 한 글자씩 표시되는 딜레이
+            yield return new WaitForSecondsRealtime(0.1f); // 실제 경과 시간에 따른 딜레이
         }
     }
 

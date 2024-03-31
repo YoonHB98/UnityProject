@@ -156,6 +156,11 @@ public class Player : DefaultActor
     // Update is called once per frame
     private void Update()
     {
+        bool paused = GameManager.instance.GetisPaused();
+        if(paused)
+        {
+            return;
+        }
         GetInput();
         move();
         //Rotation();

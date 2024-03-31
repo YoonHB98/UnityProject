@@ -28,6 +28,10 @@ public class UIManager : MonoBehaviour
             // Canvas의 자식 오브젝트들을 가져와서 비활성화
             foreach (Transform child in uiCanvas.transform)
             {
+                if (child.CompareTag("PauseOverlay"))
+                {
+                    continue;
+                }
                 child.gameObject.SetActive(false);
             }
         }
@@ -42,6 +46,10 @@ public class UIManager : MonoBehaviour
             // Canvas의 자식 오브젝트들을 가져와서 활성화
             foreach (Transform child in uiCanvas.transform)
             {
+                if (child.CompareTag("PauseOverlay"))
+                {
+                    continue;
+                }
                 child.gameObject.SetActive(true);
             }
         }
