@@ -4139,7 +4139,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 0
-  DangerMarker: {fileID: 0}
+  DangerMarker: {fileID: 2372315929224320950, guid: 40508aa8b657e5b4d96317b326b8d704, type: 3}
   isChase: 1
 --- !u!54 &1710385723
 Rigidbody:
@@ -4273,7 +4273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4462523135328065168, guid: 464cc7c4f7ea10b47a36d7848aa9ca9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.91
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4462523135328065168, guid: 464cc7c4f7ea10b47a36d7848aa9ca9a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4382,8 +4382,8 @@ MonoBehaviour:
   detectionRange: 30
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
-  DangerMarker: {fileID: 0}
+    m_Bits: 1024
+  DangerMarker: {fileID: 2372315929224320950, guid: 40508aa8b657e5b4d96317b326b8d704, type: 3}
   isChase: 1
 --- !u!65 &1834746995
 BoxCollider:
