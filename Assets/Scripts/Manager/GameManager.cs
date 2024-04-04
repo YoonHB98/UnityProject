@@ -8,6 +8,18 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     //일시정지
     private bool isPaused = false;
+    public int level = 0;
+    public PlayLevel _playLevel;
+
+    public enum PlayLevel
+    {
+        TestLevel,
+        MainMenuLevel,
+        HomeTownLevel,
+        Stage1Level,
+        Stage2Level,
+        Stage3Level
+    }
 
 
     void Awake()
@@ -35,9 +47,11 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void StartGame()
+
+    public void ChangeLevel()
     {
-        StartCoroutine(LoadLevelAndTogglePause("TestLevel"));
+        //PlayeLevel을 string으로 변환하여 LoadLevelAndTogglePause 코루틴 실행
+        StartCoroutine(LoadLevelAndTogglePause((_playLevel).ToString()));
     }
 
     private IEnumerator LoadLevelAndTogglePause(string levelName)

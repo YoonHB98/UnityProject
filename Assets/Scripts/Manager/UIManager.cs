@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(uiCanvas);
     }
 
     // UI를 잠시 끄는 함수
