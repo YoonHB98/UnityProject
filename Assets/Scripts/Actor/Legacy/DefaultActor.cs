@@ -18,5 +18,4 @@ public class DefaultActor : MonoBehaviour
     protected float hAxis;
     protected float vAxis;
     protected Vector3 moveVec;
-    jklkjljlj
 }
