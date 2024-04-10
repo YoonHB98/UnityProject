@@ -8,6 +8,13 @@ public class Dialogue : MonoBehaviour
     private string[] dialogues;
     private int currentIndex;
 
+    enum DialogueTime
+    {
+        Tutorial1,
+        Tutorial2,
+        Tutorial3
+    }
+
     private void Awake()
     {
         dialogueText.text = "";
@@ -49,10 +56,18 @@ public class Dialogue : MonoBehaviour
 
     void NextDialogue()
     {
-        currentIndex++;
-        if (currentIndex < dialogues.Length)
+        StopAllCoroutines(); // 현재 진행 중인 대화 표시 코루틴 중지
+                             //만약 대화가 끝나지 않았다면 텍스트를 모두 표시
+        if (dialogueText.text != dialogues[currentIndex])
         {
-            StopAllCoroutines(); // 현재 진행 중인 대화 표시 코루틴 중지
+            dialogueText.text = dialogues[currentIndex];
+            return;
+        }
+
+
+        if (currentIndex + 1 < dialogues.Length)
+        {
+            currentIndex++;
             dialogueText.text = ""; // 대화 텍스트 초기화
             StartCoroutine("ShowDialogue");
         }

@@ -50,8 +50,18 @@ public class GameManager : MonoBehaviour
 
     public void ChangeLevel()
     {
-        //PlayeLevel을 string으로 변환하여 LoadLevelAndTogglePause 코루틴 실행
         StartCoroutine(LoadLevelAndTogglePause((_playLevel).ToString()));
+    }
+
+    public void ChangeLevel(int playLevel)
+    {
+        PlayLevel _playLevel = (PlayLevel)playLevel;
+        StartCoroutine(LoadLevelAndTogglePause((_playLevel).ToString()));
+    }
+
+    public void ChangeLevel(string playLevel)
+    {
+        StartCoroutine(LoadLevelAndTogglePause(playLevel));
     }
 
     private IEnumerator LoadLevelAndTogglePause(string levelName)
