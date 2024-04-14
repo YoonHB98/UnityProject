@@ -11,7 +11,9 @@ public class PhoneButton : MonoBehaviour
 
     public void Awake()
     {
+       
         PhoneBT = this.gameObject;
+        MyName = (ButtonState)System.Enum.Parse(typeof(ButtonState), this.gameObject.name);
     }
 
     // Start is called before the first frame update
@@ -38,21 +40,6 @@ public class PhoneButton : MonoBehaviour
     public void ButtonOnClick()
     {
         ToggleUI.ToggleImage();
-        ButtonManager.instance.GetComponent<ButtonManager>().ButtonStatusChanged();
-        return;
-        //switch (state)
-        //{
-        //    case ButtonState.Box:
-        //        ToggleUI.ToggleImage();
-        //        ButtonManager.instance.GetComponent<ButtonManager>().ButtonStatusChanged();
-        //        Debug.Log("Box");
-        //        break;
-        //    case ButtonState.Encyclopedia:
-        //        Debug.Log("Setting");
-        //        break;
-        //    case ButtonState.Profile:
-        //        Debug.Log("None");
-        //        break;
-        //}
+        ButtonManager.instance.GetComponent<ButtonManager>().ButtonStatusChanged(MyName);
     }
 }

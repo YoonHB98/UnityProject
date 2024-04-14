@@ -4,11 +4,13 @@ using UnityEngine;
 
 public enum ButtonState
 {
+    None,
+    Idle,
     Box,
     Encyclopedia,
     Profile
 }
-public class ButtonStatus : MonoBehaviour
+public class ButtonStatus 
 {
     public ButtonState MyState;
 
