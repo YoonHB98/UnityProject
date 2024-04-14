@@ -39,6 +39,8 @@ public class ButtonManager : MonoBehaviour
         {
             switch (ButtonStatus)
             {
+                case ButtonState.Nope:
+                    break;
                 case ButtonState.None:
                     Phone.SetActive(true);
                     ButtonStatus = ButtonState.Idle;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum ButtonState
 {
+    Nope,
     None,
     Idle,
     Box,
