@@ -5,8 +5,8 @@ using UnityEngine;
 public enum ButtonState
 {
     Box,
-    Setting,
-    None
+    Encyclopedia,
+    Profile
 }
 public class ButtonStatus : MonoBehaviour
 {

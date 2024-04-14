@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class PhoneButton : MonoBehaviour
 {
-    public static GameObject PhoneBT;
-    public ButtonState MyState;
-    public InventoryUI InventoryUI;
+    public GameObject PhoneBT;
+    public ButtonState MyName;
+    public Toggle ToggleUI;
 
 
     public void Awake()
     {
         PhoneBT = this.gameObject;
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //InventoryUI를 컴포넌트로 가지고 있는 경우에만
+        if (GameObject.Find(PhoneBT.name).GetComponent<Toggle>() != null)
+        {
+            ToggleUI = GameObject.Find(PhoneBT.name).GetComponent<Toggle>();
+        }
+
     }
 
     // Update is called once per frame
@@ -28,18 +34,18 @@ public class PhoneButton : MonoBehaviour
 
     public void ButtonOnClick()
     {
-        ButtonState state = MyState;
+        ButtonState state = MyName;
         switch (state)
         {
             case ButtonState.Box:
-                InventoryUI.ToggleInventory();
+                ToggleUI.ToggleImage();
                 ButtonManager.instance.GetComponent<ButtonManager>().ButtonStatusChanged();
                 Debug.Log("Box");
                 break;
-            case ButtonState.Setting:
+            case ButtonState.Encyclopedia:
                 Debug.Log("Setting");
                 break;
-            case ButtonState.None:
+            case ButtonState.Profile:
                 Debug.Log("None");
                 break;
         }
