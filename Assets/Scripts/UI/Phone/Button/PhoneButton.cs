@@ -12,16 +12,19 @@ public class PhoneButton : MonoBehaviour
     public void Awake()
     {
         PhoneBT = this.gameObject;
-
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        //InventoryUI를 컴포넌트로 가지고 있는 경우에만
-        if (GameObject.Find(PhoneBT.name).GetComponent<Toggle>() != null)
+        //PhoneBT.name + "NBt"가 있다면
+       GameObject _tmp = GameObject.Find(PhoneBT.name + "NBt");
+        if (_tmp != null && _tmp.GetComponent<Toggle>() != null)
         {
-            ToggleUI = GameObject.Find(PhoneBT.name).GetComponent<Toggle>();
+            ToggleUI = _tmp.GetComponent<Toggle>();
+        }else
+        {
+            Debug.Log("ToggleUI is null");
         }
 
     }
@@ -34,20 +37,22 @@ public class PhoneButton : MonoBehaviour
 
     public void ButtonOnClick()
     {
-        ButtonState state = MyName;
-        switch (state)
-        {
-            case ButtonState.Box:
-                ToggleUI.ToggleImage();
-                ButtonManager.instance.GetComponent<ButtonManager>().ButtonStatusChanged();
-                Debug.Log("Box");
-                break;
-            case ButtonState.Encyclopedia:
-                Debug.Log("Setting");
-                break;
-            case ButtonState.Profile:
-                Debug.Log("None");
-                break;
-        }
+        ToggleUI.ToggleImage();
+        ButtonManager.instance.GetComponent<ButtonManager>().ButtonStatusChanged();
+        return;
+        //switch (state)
+        //{
+        //    case ButtonState.Box:
+        //        ToggleUI.ToggleImage();
+        //        ButtonManager.instance.GetComponent<ButtonManager>().ButtonStatusChanged();
+        //        Debug.Log("Box");
+        //        break;
+        //    case ButtonState.Encyclopedia:
+        //        Debug.Log("Setting");
+        //        break;
+        //    case ButtonState.Profile:
+        //        Debug.Log("None");
+        //        break;
+        //}
     }
 }
