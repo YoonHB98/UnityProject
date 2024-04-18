@@ -9,29 +9,34 @@ public class NPCManager : MonoBehaviour
     public GameObject Second;
     public bool buttonactive = true;
     public NPCState NPCStatus;
+    public bool _tmp;
 
-    private void Awake()
+    public void Awake()
     {
         instance = this.gameObject;
     }
 
 
-    private void Update()
+    public void OnInput(NPCState npcStatus)
     {
-        escape();
-    }
+        switch (npcStatus)
+        {
+            case NPCState.Upgrade:
+                _tmp = !First.activeSelf;
+                First.SetActive(_tmp);
+                break;
+            case NPCState.Store:
+                _tmp = !Second.activeSelf;
+                Second.SetActive(_tmp);
+                break;
+            case NPCState.Portal:
+                GameManager.instance.ChangeLevelFade("TestLevel");
+                break;
+            case NPCState.None:
+                First.SetActive(false);
+                Second.SetActive(false);
+                break;
+        }
 
-    public void escape()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            bool _tmp = !First.activeSelf;
-            First.SetActive(_tmp);
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            bool _tmp = !Second.activeSelf;
-            Second.SetActive(_tmp);
-        }
     }
 }

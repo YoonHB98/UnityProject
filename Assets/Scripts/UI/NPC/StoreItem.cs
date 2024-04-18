@@ -9,7 +9,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerEnter(PointerEventData eventData)
     {
         StoreItemPanel.SetActive(true);
-        StoreItemPanel.transform.position = new Vector3(transform.position.x +190, StoreItemPanel.transform.position.y, StoreItemPanel.transform.position.z);
+        StoreItemPanel.transform.position = new Vector3(transform.position.x +300, StoreItemPanel.transform.position.y, StoreItemPanel.transform.position.z);
     }
 
     public void OnPointerExit(PointerEventData eventData)

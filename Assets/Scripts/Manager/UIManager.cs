@@ -9,16 +9,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(uiCanvas);
+        instance = this;
     }
 
     // UI를 잠시 끄는 함수

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public int level = 0;
     public PlayLevel _playLevel;
     SceneChangeEffect fade;
+    public GameObject pauseOverlay;
 
     public enum PlayLevel
     {
@@ -56,12 +57,13 @@ public class GameManager : MonoBehaviour
 
     public void ChangeLevel(int playLevel)
     {
-        PlayLevel _playLevel = (PlayLevel)playLevel;
+        _playLevel = (PlayLevel)playLevel;
         StartCoroutine(LoadLevelAndTogglePause((_playLevel).ToString()));
     }
 
     public void ChangeLevel(string playLevel)
     {
+        _playLevel = (PlayLevel)System.Enum.Parse(typeof(PlayLevel), playLevel);
         StartCoroutine(LoadLevelAndTogglePause(playLevel));
     }
 
@@ -72,12 +74,13 @@ public class GameManager : MonoBehaviour
 
     public void ChangeLevelFade(int playLevel)
     {
-        PlayLevel _playLevel = (PlayLevel)playLevel;
+        _playLevel = (PlayLevel)playLevel;
         StartCoroutine(LoadLevelAndTogglePausewithFade((_playLevel).ToString()));
     }
 
     public void ChangeLevelFade(string playLevel)
     {
+        _playLevel = (PlayLevel)System.Enum.Parse(typeof(PlayLevel), playLevel);
         StartCoroutine(LoadLevelAndTogglePausewithFade(playLevel));
     }
 
@@ -116,18 +119,18 @@ public class GameManager : MonoBehaviour
 
     public void TogglePause()
     {
-        //tag가 pauseoverlay인 오브젝트들을 찾아서 활성화/비활성화
-        GameObject[] pauseOverlays = GameObject.FindGameObjectsWithTag("PauseOverlay");
-        if (pauseOverlays.Length == 0)
+
+        if (pauseOverlay == null)
         {
             Debug.LogWarning("No GameObjects with tag 'PauseOverlay' found.");
             return;
-        }
-        isPaused = !isPaused;
-        foreach (GameObject pauseOverlay in pauseOverlays)
+        }else if(_playLevel == PlayLevel.MainMenuLevel || _playLevel == PlayLevel.CutSceneLevel)
         {
-            pauseOverlay.SetActive(isPaused);
+            return;
         }
+
+        isPaused = !isPaused;
+        pauseOverlay.SetActive(isPaused);
         //일시정지 상태에 따라 Time.timeScale 변경
 
 

@@ -6,8 +6,9 @@ public enum NPCState
 {
     Nope,
     None,
-    Fisrt,
-    Second
+    Store,
+    Upgrade,
+    Portal,
 }
 public class NPCStatus
 {
