@@ -10,8 +10,13 @@ public class ButtonManager : MonoBehaviour
     public bool buttonactive = true;
     public ButtonState ButtonStatus;
 
+    public Slot[] slots;
+    public Transform slotHolder;
+
+
     private void Awake()
     {
+        slots = slotHolder.GetComponentsInChildren<Slot>();
         instance = this.gameObject;
     }
 
