@@ -7245,6 +7245,62 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 829cb97db78c83847a7617e1573327ee, type: 3}
+--- !u!1 &674534650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 674534652}
+  - component: {fileID: 674534651}
+  m_Layer: 0
+  m_Name: ItemDataBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &674534651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674534650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b51ad4a5501a844873ab5d1512a7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - itemType: 0
+    itemName: Barrage
+    itemImage: {fileID: 21300000, guid: 8db98af15eb89db47bbda77841503f98, type: 3}
+  - itemType: 0
+    itemName: DashItem
+    itemImage: {fileID: 21300000, guid: 71062aceaaec921418fc54c2aa50177c, type: 3}
+  - itemType: 0
+    itemName: Speed
+    itemImage: {fileID: 21300000, guid: 1b2983aa0c3b2ae4aa4586a975a7b89d, type: 3}
+  ItemPrefab: {fileID: 0}
+  pos: []
+--- !u!4 &674534652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674534650}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 956.75, y: 265.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &688989767
 GameObject:
   m_ObjectHideFlags: 0
@@ -22312,3 +22368,4 @@ SceneRoots:
   - {fileID: 826034391}
   - {fileID: 429737724}
   - {fileID: 1913318304}
+  - {fileID: 674534652}

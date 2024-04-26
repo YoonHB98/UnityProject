@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DropItem : MonoBehaviour
 {
     public UIItem item;
-    public SpriteRenderer image;
+    public Image image;
 
     public void SetItem(UIItem _item)
     {
