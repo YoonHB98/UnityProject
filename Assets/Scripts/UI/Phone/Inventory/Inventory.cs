@@ -20,6 +20,12 @@ public class Inventory : MonoBehaviour
     public delegate void OnSlotCountChange(int val); // 델리게이트 선언
     public OnSlotCountChange onSlotCountChange;  // 델리게이트 인스턴스화
 
+
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChanged;
+
+    public List<Item> items = new List<Item>();
+
     private int slotCnt;
     public int SlotCnt
     {
@@ -36,10 +42,15 @@ public class Inventory : MonoBehaviour
         SlotCnt = 4;
     }
 
-
-    // Update is called once per frame
-    void Update()
+    public bool AddItem(Item item)
     {
-        
+        if(items.Count < SlotCnt)
+        {
+            items.Add(item);
+            if (onItemChanged != null)
+                onItemChanged.Invoke();
+            return true;
+        }
+        return false;
     }
 }
