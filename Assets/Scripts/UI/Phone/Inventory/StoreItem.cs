@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,36 @@ public class StoreItem : MonoBehaviour
     public Image image;
 
 
+    public Transform FindInChildren(Transform parent, string name)
+    {
+        Transform result = null;
+
+        // 부모 오브젝트의 모든 자식들을 검사
+        foreach (Transform child in parent)
+        {
+            // 자식의 이름이 원하는 이름과 일치하는지 확인
+            if (child.name == name)
+            {
+                // 일치하는 경우 해당 Transform 반환
+                result = child;
+                break;
+            }
+            // 일치하지 않는 경우 재귀적으로 자식의 자식을 검색
+            result = FindInChildren(child, name);
+            if (result != null)
+                break;
+        }
+
+        return result;
+    }
+
+    private void Start()
+    {
+        item.itemImage = FindInChildren(transform, "itemImage").GetComponent<Image>().sprite;
+        item.itemName = FindInChildren(transform, "itemName").GetComponent<TMP_Text>().text;
+        item.itemDescription = FindInChildren(transform, "Description").GetComponent<TMP_Text>().text;
+        item.itemPrice = FindInChildren(transform, "Price").GetComponent<TMP_Text>().text;
+    }
 
 
     public void SetItem(UIItem _item)
