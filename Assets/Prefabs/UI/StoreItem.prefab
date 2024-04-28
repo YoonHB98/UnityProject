@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3758323193464435909}
   - component: {fileID: 1362001087473118016}
   - component: {fileID: 1041562994631337789}
+  - component: {fileID: 6314084661982195604}
   m_Layer: 5
   m_Name: StoreItem
   m_TagString: Untagged
@@ -152,6 +153,26 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 5.5, y: 5.5}
   m_UseGraphicAlpha: 1
+--- !u!114 &6314084661982195604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567170287779442011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d790f9d9b7fe314a88cc8e82ffca9e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemType: 0
+    itemName: 
+    itemNameText: {fileID: 5167604180199279778}
+    itemDescription: {fileID: 1314604956923050328}
+    itemPrice: {fileID: 8505981491172538135}
+    itemImage: {fileID: 0}
+  image: {fileID: 1362001087473118016}
 --- !u!1 &1186738213470193714
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,7 +624,7 @@ GameObject:
   - component: {fileID: 2490851144736763724}
   - component: {fileID: 1314604956923050328}
   m_Layer: 5
-  m_Name: Item1Name (2)
+  m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -962,7 +983,7 @@ GameObject:
   - component: {fileID: 3807970405019046191}
   - component: {fileID: 8505981491172538135}
   m_Layer: 5
-  m_Name: Item1Name
+  m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

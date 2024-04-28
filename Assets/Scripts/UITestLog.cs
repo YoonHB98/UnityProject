@@ -26,7 +26,17 @@ public class UITestLog : MonoBehaviour
         }
 
         Debug.Log("Selected Button Object: " + selectedButtonObject.name);
+        if (selectedButtonObject.GetComponent<StoreItem>().GetItem() == null)
+        {
+            Debug.Log("Item is null");
+        }
+        if(Inventory.instance == null)
+        {
+            Debug.Log("Inventory is null");
+        }
+        Inventory.instance.AddItem(selectedButtonObject.GetComponent<StoreItem>().GetItem());
         SetChildrenImagesToNull(selectedButtonObject.transform);
+        selectedButtonObject = null;
     }
 
     void SetChildrenImagesToNull(Transform parent)

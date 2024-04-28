@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged();
     public OnItemChanged onItemChanged;
 
-    public List<Item> items = new List<Item>();
+    public List<UIItem> items = new List<UIItem>();
 
     private int slotCnt;
     public int SlotCnt
@@ -33,7 +33,7 @@ public class Inventory : MonoBehaviour
         set
         {
             slotCnt = value;
-            onSlotCountChange.Invoke(slotCnt);
+            onSlotCountChange?.Invoke(slotCnt);
         }
     }
 
@@ -42,7 +42,7 @@ public class Inventory : MonoBehaviour
         SlotCnt = 4;
     }
 
-    public bool AddItem(Item item)
+    public bool AddItem(UIItem item)
     {
         if(items.Count < SlotCnt)
         {
