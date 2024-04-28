@@ -18,9 +18,8 @@ public class UIItem
 {
     public ItemType itemType;
     public string itemName;
-    public TMP_Text itemNameText;
-    public TMP_Text itemDescription;
-    public TMP_Text itemPrice;
+    public string itemDescription;
+    public string itemPrice;
     public Sprite itemImage;
 
 

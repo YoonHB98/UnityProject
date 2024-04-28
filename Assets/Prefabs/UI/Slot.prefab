@@ -87,8 +87,8 @@ GameObject:
   - component: {fileID: 8310608478772029055}
   - component: {fileID: 7266850728689665872}
   - component: {fileID: 2732225806228060089}
-  - component: {fileID: 4522906106416560940}
   - component: {fileID: -6707338548456544851}
+  - component: {fileID: 16610773580977551}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -198,21 +198,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4522906106416560940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474665308359922262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 2, y: -2}
-  m_UseGraphicAlpha: 1
 --- !u!114 &-6707338548456544851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,3 +210,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf708afdea95b349894501d68df4c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item:
+    itemType: 0
+    itemName: 
+    itemDescription: 
+    itemPrice: 
+    itemImage: {fileID: 0}
+  itemIcon: {fileID: 3411170432778350792}
+--- !u!114 &16610773580977551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474665308359922262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: 1}
+  m_UseGraphicAlpha: 1

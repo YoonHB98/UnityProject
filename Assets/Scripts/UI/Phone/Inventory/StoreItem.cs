@@ -25,9 +25,8 @@ public class StoreItem : MonoBehaviour
     public void SetItem(string _itemName,string _itemNameText ,string _itemDescription, string _itemPrice, Sprite _itemImage)
     {
         item.itemName = _itemName;
-        item.itemNameText.text = _itemNameText;
-        item.itemDescription.text = _itemDescription;
-        item.itemPrice.text = _itemPrice;
+        item.itemDescription = _itemDescription;
+        item.itemPrice = _itemPrice;
         item.itemImage = _itemImage;
     }
 

@@ -168,9 +168,8 @@ MonoBehaviour:
   item:
     itemType: 0
     itemName: 
-    itemNameText: {fileID: 5167604180199279778}
-    itemDescription: {fileID: 1314604956923050328}
-    itemPrice: {fileID: 8505981491172538135}
+    itemDescription: 
+    itemPrice: 
     itemImage: {fileID: 0}
   image: {fileID: 1362001087473118016}
 --- !u!1 &1186738213470193714
@@ -624,7 +623,7 @@ GameObject:
   - component: {fileID: 2490851144736763724}
   - component: {fileID: 1314604956923050328}
   m_Layer: 5
-  m_Name: Description
+  m_Name: itemDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -758,7 +757,7 @@ GameObject:
   - component: {fileID: 8464495929310118023}
   - component: {fileID: 5167604180199279778}
   m_Layer: 5
-  m_Name: Item1Name (1)
+  m_Name: itemName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -893,7 +892,7 @@ GameObject:
   - component: {fileID: 9018670243569800819}
   - component: {fileID: 1056425967980401801}
   m_Layer: 5
-  m_Name: Image
+  m_Name: itemImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -983,7 +982,7 @@ GameObject:
   - component: {fileID: 3807970405019046191}
   - component: {fileID: 8505981491172538135}
   m_Layer: 5
-  m_Name: Price
+  m_Name: itemPrice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
