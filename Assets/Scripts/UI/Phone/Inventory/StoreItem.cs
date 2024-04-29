@@ -61,7 +61,8 @@ public class StoreItem : MonoBehaviour
         item.itemImage = _itemImage;
     }
 
-    public UIItem GetItem()
+    public UIItem
+        GetItem()
     {
         return item;
     }

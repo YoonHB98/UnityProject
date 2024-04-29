@@ -15,11 +15,7 @@ public class Toggle : MonoBehaviour
             child.gameObject.SetActive(activeImage);
         }
     }
-    
-    private void Update()
-    {
 
-    }
 
     public void ToggleImage()
     {

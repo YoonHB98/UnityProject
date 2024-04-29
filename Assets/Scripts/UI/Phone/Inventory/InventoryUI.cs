@@ -10,10 +10,18 @@ public class InventoryUI : MonoBehaviour
     public Slot[] slots;
     public Transform slotHolder;
 
-    private void Start()
+    private void Awake()
     {
         inventory = Inventory.instance;
+    }
+    private void Start()
+    {
         slots = slotHolder.GetComponentsInChildren<Slot>();
+        foreach (Slot slot in slots)
+        {
+            slot.gameObject.GetComponent<ItemDescription>().ItemPanel = GameObject.Find("ItemDescription");
+        }
+
         inventory.onSlotCountChange += SlotChange;
         inventory.SlotCnt++;
         inventory.onItemChanged += RedrawSlotUI;
@@ -51,4 +59,24 @@ public class InventoryUI : MonoBehaviour
             slots[i].UpdateSlot();
         }
     }
+
+    //slot의 버튼을 누르면 그 슬롯을 제외한 나머지 슬롯의 이미지를 원래대로 돌려놓음
+    public void RevertSlotImage()
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].isChanged == false)
+            {
+                slots[i].RevertImage();
+            }else
+            {
+                slots[i].isChanged = false;
+            }
+
+        }
+    }
+
+
+
+
 }
