@@ -84,18 +84,16 @@ public class Enemy : MonoBehaviour
 
     void DangerMarkerShoot()
     {
-        if(enemyType == Type.B)
+        GameObject DangerMarkerClone = Instantiate(DangerMarker, transform.position, transform.rotation);
+        Rigidbody rigidMarker = DangerMarkerClone.GetComponent<Rigidbody>();
+        DangerMarkerClone.transform.position += Vector3.up *3;
+        if (enemyType == Type.B)
         {
-            GameObject DangerMarkerClone = Instantiate(DangerMarker, transform.position, transform.rotation);
-            Rigidbody rigidMarker = DangerMarkerClone.GetComponent<Rigidbody>();
             rigidMarker.AddForce(transform.forward * 120, ForceMode.Impulse);
         }
         else
         {
-            GameObject DangerMarkerClone = Instantiate(DangerMarker, transform.position, transform.rotation);
-            Rigidbody rigidMarker = DangerMarkerClone.GetComponent<Rigidbody>();
             rigidMarker.velocity = transform.forward * 60;
-
         }
         
     }

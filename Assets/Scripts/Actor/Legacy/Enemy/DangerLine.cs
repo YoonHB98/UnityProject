@@ -13,6 +13,12 @@ public class DangerLine : MonoBehaviour
         
         tr.startColor = new Color ( 1, 0, 0, 0.7f );
         tr.endColor = new Color ( 1, 0, 0, 0.7f );
+        tr.widthMultiplier = 5.0f;
+        //트레일 렌더러를 네모로
+        tr.alignment = LineAlignment.View;
+
+
+
         Destroy ( gameObject,0.5f );
 
     }
