@@ -160,10 +160,10 @@ public class Enemy : MonoBehaviour
             Vector3 reactVec = transform.position - other.transform.position;
 
             StartCoroutine(OnDamage(reactVec));
-        }else if(other.tag == "EnemyBullet")
+        }else if(other.tag == "Bullet")
         {
-            Bullet enemyBullet = other.GetComponent<Bullet>();
-            curHp -= enemyBullet.damage;
+            Bullet Bullet = other.GetComponent<Bullet>();
+            curHp -= Bullet.damage;
             Vector3 reactVec = transform.position - other.transform.position;
 
             if (other.GetComponent<Rigidbody>() != null)

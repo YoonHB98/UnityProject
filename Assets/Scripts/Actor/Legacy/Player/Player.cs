@@ -190,10 +190,7 @@ public class Player : DefaultActor
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Weapon")
-        {
-            nearObject = other.gameObject;
-        }else if(other.tag == "Coin")
+        if (other.tag == "Weapon" || other.tag == "Coin" || other.tag == "Shop")
         {
             nearObject = other.gameObject;
         }else
@@ -212,6 +209,15 @@ public class Player : DefaultActor
         }else if(other.tag == "Coin")
         {
             nearObject = null;
+        }else if(other.tag == "Shop")
+        {
+            Shop shop = nearObject.GetComponent<Shop>();
+            shop.Exit();
+            nearObject = null;
+        }
+        else
+        {
+            return;
         }
 
     }
@@ -330,6 +336,10 @@ public class Player : DefaultActor
                     _coin = maxCoin;
                 }
                 Destroy(nearObject);
+            }else if(nearObject.tag == "Shop")
+            {
+                Shop shop = nearObject.GetComponent<Shop>();
+                shop.Enter(this);
             }
         }
     }
