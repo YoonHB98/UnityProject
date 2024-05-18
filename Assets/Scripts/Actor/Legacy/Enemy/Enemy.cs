@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public enum Type { A, B, C};
+    public enum Type { A, B, C, D};
     public Type enemyType;
     public int maxHp;
     public int curHp;
@@ -15,27 +15,35 @@ public class Enemy : MonoBehaviour
     public bool isAttack;
     public float detectionRange;
     public LayerMask layerMask;
+    public bool isDead;
 
     public GameObject DangerMarker;
 
     bool chaseStart;
+    bool destroy;
     public bool isChase;
-    Rigidbody rigid;
-    BoxCollider boxCollider;
-    Material mat;
-    NavMeshAgent nav;
+    public Rigidbody rigid;
+    public BoxCollider boxCollider;
+    public MeshRenderer[] meshes;
+    public NavMeshAgent nav;
+    public Animator anim;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
-        mat = GetComponentInChildren<MeshRenderer>().material;
+        meshes = GetComponentsInChildren<MeshRenderer>();
         nav = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
-        if (Target != null && Vector3.Distance(transform.position, Target.position) <= detectionRange)
+        if (isDead)
+        {
+            StopAllCoroutines();
+            return;
+        }
+        if (Target != null && Vector3.Distance(transform.position, Target.position) <= detectionRange && destroy == false)
         {
             chaseStart = true;
         }
@@ -54,6 +62,10 @@ public class Enemy : MonoBehaviour
 
     void Targerting()
     {
+        if (isDead == true)
+        {
+            return;
+        }
 
         float targetRadius = 0;
         float targetRange = 0;
@@ -182,15 +194,25 @@ public class Enemy : MonoBehaviour
 
     IEnumerator OnDamage(Vector3 reactVec)
     {
-        mat.color = Color.red;
+        foreach(MeshRenderer mesh in meshes)
+        {
+            mesh.material.color = Color.red;
+        }
         yield return new WaitForSeconds(0.1f);
         if (curHp > 0)
         {
-            mat.color = Color.white;
+            foreach (MeshRenderer mesh in meshes)
+            {
+                mesh.material.color = Color.white;
+            }
         }else{
-            mat.color = Color.gray;
+            foreach (MeshRenderer mesh in meshes)
+            {
+                mesh.material.color = Color.gray;
+            }
             gameObject.layer = 12;
-
+            isDead = true;
+            nav.enabled = false;
             reactVec = reactVec.normalized;
             reactVec += Vector3.up;
 
@@ -198,6 +220,8 @@ public class Enemy : MonoBehaviour
 
             Destroy(gameObject , 3.0f);
             chaseStart = false;
+            destroy = true;
+            StopAllCoroutines();
         }
     }
 }

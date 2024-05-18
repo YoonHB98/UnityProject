@@ -244,23 +244,37 @@ public class Player : DefaultActor
             {
                 Bullet enemyBullet = other.GetComponent<Bullet>();
                 _hp -= enemyBullet.damage;
-                StartCoroutine(OnDamage());
+
+                bool isBossAtk = other.name == "Boss Melee Area";
+                StartCoroutine(OnDamage(isBossAtk));
             }
         }
     }
 
-    IEnumerator OnDamage()
+    IEnumerator OnDamage(bool isBossAtk)
     {
         isDamage = true;
         foreach (MeshRenderer mesh in meshs)
         {
             mesh.material.color = Color.red;
         }
+
+        if (isBossAtk)
+        {
+            rigid.AddForce(transform.forward * -25, ForceMode.Impulse);
+        }
+
         yield return new WaitForSeconds(1.0f);
         isDamage = false;
         foreach (MeshRenderer mesh in meshs)
         {
             mesh.material.color = Color.white;
+        }
+
+        if (isBossAtk)
+        {
+            rigid.velocity = Vector3.zero;
+            isDamage = false;
         }
     }
 
