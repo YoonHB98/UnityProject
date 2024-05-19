@@ -11,6 +11,8 @@ public class Boss : Enemy
     public float ThinkTime;
     public float jumpForce = 10.0f; // Á¡ÇÁ Èû
     public float fallSpeed = 10.0f; // ³«ÇÏ ¼Óµµ
+    public ShowCircle Area;
+    public ShowSwing SwingArea;
 
     private void Awake()
     {
@@ -46,8 +48,8 @@ public class Boss : Enemy
     {
         yield return new WaitForSeconds(ThinkTime);
 
-        //int ranAction = Random.Range(0, 5);
-        int ranAction = 2;
+        int ranAction = Random.Range(0, 4);
+        //int ranAction = 3;
         switch (ranAction)
         {
             case 0:
@@ -72,16 +74,21 @@ public class Boss : Enemy
 
     IEnumerator JumpAttack()
     {
+        Area.Active = true;
+        Area._BorderScale = 0.1f;
         tauntVec = Target.position + lookVec;
-
+        Area.Pos = tauntVec;
         isLook = false;
         nav.isStopped = false;
         boxCollider.enabled = false;
         //anim.SetTrigger("JumpAttack");
         yield return new WaitForSeconds(2.0f);
-
+        Area.Active = false;
         yield return new WaitForSeconds(2.0f);
         meleeArea.enabled = true;
+        Area.Pos = new Vector3(-1000, -1000, -1000);
+
+        Area._BorderScale = 0.1f;
 
         yield return new WaitForSeconds(0.5f);
         meleeArea.enabled = false;
@@ -91,6 +98,7 @@ public class Boss : Enemy
         nav.isStopped = true;
         boxCollider.enabled = true;
 
+
         StartCoroutine(Think());
 
     }
@@ -98,7 +106,12 @@ public class Boss : Enemy
     IEnumerator Swing()
     {
         //anim.SetTrigger("Swing"); 
+        isLook = false;
+        SwingArea.Pos = transform.position;
+        SwingArea.Active = true;
         yield return new WaitForSeconds(2.0f);
+        SwingArea.Active = false;
+        SwingArea.Pos = new Vector3(-1000, -1000, -1000);
         StartCoroutine(Think());
     }
 

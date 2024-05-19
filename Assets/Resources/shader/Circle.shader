@@ -7,7 +7,6 @@ Shader "Custom/Circle"
         _Center ("Center", Vector) = (0,0,0,0)
         _Radius ("Radius", Range(0,500)) = 75
         _Border ("Border", Range(0,100)) = 12
-
     }
     SubShader
     {
@@ -23,24 +22,30 @@ Shader "Custom/Circle"
         float _Border;
 
         struct Input
-		{
-			float2 uv_MainTex;
+        {
+            float2 uv_MainTex;
             float3 worldPos;
-		};
+        };
      
         void surf (Input IN, inout SurfaceOutput o)
         {
             half4 c = tex2D (_MainTex, IN.uv_MainTex);
             float dist = distance(_Center, IN.worldPos);
-            
+
+            // Clip pixels outside the radius plus the border
+            if(dist > _Radius + _Border)
+            {
+                clip(-1); // Clip this pixel
+            }
+
             if(dist > _Radius && dist < _Radius + _Border)
-			{
-				o.Albedo = _AreaColor;
-			}
-			else
-			{
-				o.Albedo = c.rgb;
-			}
+            {
+                o.Albedo = _AreaColor;
+            }
+            else
+            {
+                o.Albedo = c.rgb;
+            }
 
             o.Alpha = c.a;
         }

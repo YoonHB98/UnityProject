@@ -128,10 +128,10 @@ public class Enemy : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
                 DangerMarkerShoot();
                 yield return new WaitForSeconds(0.5f);
-                rigid.AddForce(transform.forward * 60, ForceMode.Impulse);
+                rigid.AddForce(transform.forward * 120, ForceMode.Impulse);
                 meleeArea.enabled = true;
                 yield return new WaitForSeconds(2.0f);
-                //rigid.velocity = Vector3.zero;
+                rigid.velocity = Vector3.zero;
                 meleeArea.enabled = false;
 
                 yield return new WaitForSeconds(3.0f);
