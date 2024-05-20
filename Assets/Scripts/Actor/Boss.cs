@@ -110,6 +110,7 @@ public class Boss : Enemy
         SwingArea.Pos = transform.position;
         SwingArea.Active = true;
         yield return new WaitForSeconds(2.0f);
+        isLook = true;
         SwingArea.Active = false;
         SwingArea.Pos = new Vector3(-1000, -1000, -1000);
         StartCoroutine(Think());
