@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CutScene : MonoBehaviour
 {
     public TMP_Text text;
+    public FadeController fadeController;
+    public Sprite[] sprite;
+    public Image image;
 
     bool isClicked = false;
 
     string[] sentences = new string[]
     {
-        "첫번째 컷씬이에요. 좌클릭시 넘어가요.",
+        "1st",
         "2nd",
-        "마지막 컷씬이에요. 클릭시 레벨이 넘어가요"
+        "3rd"
     };
     // 대사의 인덱스
     int index = 0;
@@ -44,7 +48,10 @@ public class CutScene : MonoBehaviour
             index++;
             if (index < sentences.Length)
             {
+                fadeController.fade.FadeOut();
                 text.text = sentences[index];
+                image.sprite = sprite[index];
+
             }
             else
             {

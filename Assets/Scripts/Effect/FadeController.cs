@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class FadeController : MonoBehaviour
 {
-
-    SceneChangeEffect fade;
+    public SceneChangeEffect fade;
     // Start is called before the first frame update
     void Start()
     {
