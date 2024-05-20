@@ -399,6 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 98555389cc46a0f4c86357790ef7eeb7, type: 2}
   Pos: {x: 0, y: 0, z: 0}
+  Active: 0
 --- !u!1001 &485995609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -875,6 +876,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: ed4205dde611b72488b55683fe6abb93, type: 2}
   - {fileID: 2100000, guid: 98555389cc46a0f4c86357790ef7eeb7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -1393,6 +1395,6 @@ SceneRoots:
   - {fileID: 465731326}
   - {fileID: 1239147445}
   - {fileID: 1257063072}
-  - {fileID: 224674918}
   - {fileID: 474342273}
   - {fileID: 880131997}
+  - {fileID: 224674918}

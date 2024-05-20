@@ -7,19 +7,24 @@ Shader "Custom/Circle"
         _Center ("Center", Vector) = (0,0,0,0)
         _Radius ("Radius", Range(0,500)) = 75
         _Border ("Border", Range(0,100)) = 12
+        _Alpha ("Alpha", Range(0,1)) = 0.5 // 추가: 강제로 설정할 반투명 알파값
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
+        Blend SrcAlpha OneMinusSrcAlpha
+        ZWrite Off
+        LOD 200
 
         CGPROGRAM
-        #pragma surface surf Lambert
+        #pragma surface surf Lambert alpha
 
         sampler2D _MainTex;
-        fixed3 _AreaColor;
+        fixed4 _AreaColor;
         float3 _Center;
         float _Radius;
         float _Border;
+        float _Alpha; // 추가: 사용자가 설정한 반투명 알파값
 
         struct Input
         {
@@ -40,14 +45,14 @@ Shader "Custom/Circle"
 
             if(dist > _Radius && dist < _Radius + _Border)
             {
-                o.Albedo = _AreaColor;
+                o.Albedo = _AreaColor.rgb;
             }
             else
             {
                 o.Albedo = c.rgb;
             }
 
-            o.Alpha = c.a;
+            o.Alpha = _Alpha;
         }
         ENDCG
     }
