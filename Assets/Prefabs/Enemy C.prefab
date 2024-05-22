@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4665223857064114341}
   m_Layer: 0
   m_Name: Enemy C
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,8 +107,14 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1024
+  isDead: 0
   DangerMarker: {fileID: 2372315929224320950, guid: 40508aa8b657e5b4d96317b326b8d704, type: 3}
   isChase: 1
+  rigid: {fileID: 0}
+  boxCollider: {fileID: 0}
+  meshes: []
+  nav: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!195 &4665223857064114341
 NavMeshAgent:
   m_ObjectHideFlags: 0

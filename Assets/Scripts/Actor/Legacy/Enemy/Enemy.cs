@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
         boxCollider = GetComponent<BoxCollider>();
         meshes = GetComponentsInChildren<MeshRenderer>();
         nav = GetComponent<NavMeshAgent>();
+        Target = GameManager.instance.player.transform;
     }
 
     private void Update()
@@ -118,11 +119,11 @@ public class Enemy : MonoBehaviour
         switch (enemyType)
         {
             case Type.A:
-                yield return new WaitForSeconds(0.2f);
-                meleeArea.enabled = true;
-                yield return new WaitForSeconds(1.0f);
-                meleeArea.enabled = false;
-                yield return new WaitForSeconds(1.0f);
+                //yield return new WaitForSeconds(0.2f);
+                //meleeArea.enabled = true;
+                //yield return new WaitForSeconds(1.0f);
+                //meleeArea.enabled = false;
+                //yield return new WaitForSeconds(1.0f);
                 break;
             case Type.B:
                 yield return new WaitForSeconds(0.5f);

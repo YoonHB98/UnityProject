@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public Player player;
+    public Poolmanager pool;
     //일시정지
     private bool isPaused = false;
     public int level = 0;

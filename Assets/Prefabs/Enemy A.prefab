@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6967455189099843162}
   m_Layer: 0
   m_Name: Enemy A
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,12 +103,18 @@ MonoBehaviour:
   meleeArea: {fileID: 438742474701081103}
   bullet: {fileID: 7638666776176480568, guid: 05c0ff2b862a7ec49a497ad15c25e7c7, type: 3}
   isAttack: 0
-  detectionRange: 30
+  detectionRange: 4000
   layerMask:
     serializedVersion: 2
     m_Bits: 1024
+  isDead: 0
   DangerMarker: {fileID: 2372315929224320950, guid: 40508aa8b657e5b4d96317b326b8d704, type: 3}
   isChase: 1
+  rigid: {fileID: 0}
+  boxCollider: {fileID: 0}
+  meshes: []
+  nav: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!195 &6967455189099843162
 NavMeshAgent:
   m_ObjectHideFlags: 0

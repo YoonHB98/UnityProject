@@ -50,6 +50,11 @@ public class Player : DefaultActor
         sDown1 = Input.GetButtonDown("Swap1");
         sDown2 = Input.GetButtonDown("Swap2");
         fDown = Input.GetButton("Fire1");
+
+        if(hAxis == 0 && vAxis == 0)
+        {
+            rigid.velocity = Vector3.zero;
+        }
     }
 
     private void move()
@@ -61,7 +66,14 @@ public class Player : DefaultActor
             moveVec = dodgeVec;
         }
 
-        transform.position += moveVec * _speed * Time.deltaTime;
+        rigid.AddForce(moveVec * _speed, ForceMode.Acceleration);
+
+        if(rigid.velocity.magnitude > _speed)
+        {
+            rigid.velocity = rigid.velocity.normalized * _speed;
+        }
+
+        //transform.position += moveVec * _speed * Time.deltaTime;
 
         anim.SetBool("isRun", moveVec != Vector3.zero);
     }

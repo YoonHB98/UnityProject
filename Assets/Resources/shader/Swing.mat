@@ -59,8 +59,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Ramp:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Alpha: 1
+    - _AlphaMultiplier: 1
     - _Border: 3.2
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -80,7 +86,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _AreaColor: {r: 0, g: 0, b: 0, a: 1}
+    - _AreaColor: {r: 1, g: 0, b: 0, a: 1}
     - _Center: {r: -1000, g: -1000, b: -1000, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
