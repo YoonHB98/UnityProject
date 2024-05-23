@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public Player player;
     public Poolmanager pool;
+    public float gameTime;
+    public float maxGameTime;
     //일시정지
     private bool isPaused = false;
     public int level = 0;
@@ -48,6 +50,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gameTime += Time.deltaTime;
+        if (gameTime > maxGameTime)
+        {
+            gameTime = maxGameTime;
+        }
         
     }
 

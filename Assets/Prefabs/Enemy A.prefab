@@ -99,6 +99,8 @@ MonoBehaviour:
   enemyType: 0
   maxHp: 30
   curHp: 30
+  speed: 6
+  animCon: []
   Target: {fileID: 0}
   meleeArea: {fileID: 438742474701081103}
   bullet: {fileID: 7638666776176480568, guid: 05c0ff2b862a7ec49a497ad15c25e7c7, type: 3}

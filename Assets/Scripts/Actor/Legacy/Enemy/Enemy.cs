@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     public Type enemyType;
     public int maxHp;
     public int curHp;
+    public float speed;
+    public RuntimeAnimatorController[] animCon;
     public Transform Target;
     public BoxCollider meleeArea;
     public GameObject bullet;
@@ -35,6 +37,28 @@ public class Enemy : MonoBehaviour
         meshes = GetComponentsInChildren<MeshRenderer>();
         nav = GetComponent<NavMeshAgent>();
         Target = GameManager.instance.player.transform;
+    }
+
+    private void OnEnable()
+    {
+        nav.enabled = true;
+        curHp = maxHp;
+        isDead = false;
+        chaseStart = true;
+        boxCollider.enabled = true;
+        foreach (MeshRenderer mesh in meshes)
+        {
+            mesh.material.color = Color.white;
+        }
+        gameObject.layer = 0;
+    }
+
+    public void Init(SpawnData spawnData)
+    {
+        speed = spawnData.speed;
+        nav.speed = speed;
+        maxHp = spawnData.health;
+        curHp = spawnData.health;
     }
 
     private void Update()
@@ -175,8 +199,8 @@ public class Enemy : MonoBehaviour
             StartCoroutine(OnDamage(reactVec));
         }else if(other.tag == "Bullet")
         {
-            Bullet Bullet = other.GetComponent<Bullet>();
-            curHp -= Bullet.damage;
+            BulletSurvival Bullet = other.GetComponent<BulletSurvival>();
+            curHp -= (int)Bullet.damage;
             Vector3 reactVec = transform.position - other.transform.position;
 
             if (other.GetComponent<Rigidbody>() != null)
@@ -212,16 +236,15 @@ public class Enemy : MonoBehaviour
                 mesh.material.color = Color.gray;
             }
             gameObject.layer = 12;
-            isDead = true;
             nav.enabled = false;
             reactVec = reactVec.normalized;
             reactVec += Vector3.up;
 
             rigid.AddForce(reactVec * 5, ForceMode.Impulse);
-
-            Destroy(gameObject , 3.0f);
             chaseStart = false;
-            destroy = true;
+            yield return new WaitForSeconds(3.0f);
+            gameObject.SetActive(false);
+
             StopAllCoroutines();
         }
     }

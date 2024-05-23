@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - EnemyBullet
   - PauseOverlay
+  - Bullet
   layers:
   - Default
   - TransparentFX
