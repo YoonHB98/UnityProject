@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
         {
             mesh.material.color = Color.white;
         }
-        gameObject.layer = 0;
+        gameObject.layer = 11;
     }
 
     public void Init(SpawnData spawnData)
@@ -203,10 +203,10 @@ public class Enemy : MonoBehaviour
             curHp -= (int)Bullet.damage;
             Vector3 reactVec = transform.position - other.transform.position;
 
-            if (other.GetComponent<Rigidbody>() != null)
-            {
-                Destroy(other.gameObject);
-            }
+            //if (other.GetComponent<Rigidbody>() != null)
+            //{
+            //    other.gameObject.SetActive(false);
+            //}
             StartCoroutine(OnDamage(reactVec));
         }
     }

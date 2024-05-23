@@ -11,6 +11,7 @@ public class Player : DefaultActor
     public GameObject[] weapons;
     public bool[] hasWeapons;
     public Camera followCamera;
+    public Scanner scanner;
 
     //jump
     bool jDown;
@@ -66,12 +67,14 @@ public class Player : DefaultActor
             moveVec = dodgeVec;
         }
 
-        rigid.AddForce(moveVec * _speed, ForceMode.Acceleration);
+        //rigid.AddForce(moveVec * _speed, ForceMode.Acceleration);
 
-        if(rigid.velocity.magnitude > _speed)
-        {
-            rigid.velocity = rigid.velocity.normalized * _speed;
-        }
+        //if(rigid.velocity.magnitude > _speed)
+        //{
+        //    rigid.velocity = rigid.velocity.normalized * _speed;
+        //}
+
+        rigid.velocity = moveVec * _speed;
 
         //transform.position += moveVec * _speed * Time.deltaTime;
 
@@ -149,6 +152,7 @@ public class Player : DefaultActor
         anim = GetComponentInChildren<Animator>();
         rigid = GetComponent<Rigidbody>();
         meshs = GetComponentsInChildren<MeshRenderer>();
+        scanner = GetComponent<Scanner>();
     }
 
     private void SetAnimation()
