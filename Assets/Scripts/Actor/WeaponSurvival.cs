@@ -48,7 +48,7 @@ public class WeaponSurvival : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            LevelUp(20, 5);
+            LevelUp(1, 5);
         }
     }
 

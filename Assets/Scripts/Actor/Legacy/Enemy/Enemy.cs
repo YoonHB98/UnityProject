@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
     public float detectionRange;
     public LayerMask layerMask;
     public bool isDead;
+    public bool isHit;
+    public int knockbackPower;
 
     public GameObject DangerMarker;
 
@@ -190,18 +192,22 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!isChase) 
+        { 
+            return; 
+        }
         if(other.tag == "Melee")
         {
             Weapon weapon = other.GetComponent<Weapon>();
             curHp -= weapon.damage;
-            Vector3 reactVec = transform.position - other.transform.position;
+            Vector3 reactVec = transform.position - GameManager.instance.player.transform.position;
 
             StartCoroutine(OnDamage(reactVec));
         }else if(other.tag == "Bullet")
         {
             BulletSurvival Bullet = other.GetComponent<BulletSurvival>();
             curHp -= (int)Bullet.damage;
-            Vector3 reactVec = transform.position - other.transform.position;
+            Vector3 reactVec = transform.position - GameManager.instance.player.transform.position;
 
             //if (other.GetComponent<Rigidbody>() != null)
             //{
@@ -213,19 +219,28 @@ public class Enemy : MonoBehaviour
 
     private void FreezeVelocity()
     {
+        if (isHit == true) 
+        {
+            return;
+        }
         rigid.velocity = Vector3.zero;
         rigid.angularVelocity = Vector3.zero;
     }
 
     IEnumerator OnDamage(Vector3 reactVec)
     {
-        foreach(MeshRenderer mesh in meshes)
+        reactVec = reactVec.normalized;
+        StartCoroutine(IsHit());
+
+        rigid.AddForce(reactVec * knockbackPower, ForceMode.Impulse);
+        foreach (MeshRenderer mesh in meshes)
         {
             mesh.material.color = Color.red;
         }
         yield return new WaitForSeconds(0.1f);
         if (curHp > 0)
         {
+
             foreach (MeshRenderer mesh in meshes)
             {
                 mesh.material.color = Color.white;
@@ -237,15 +252,22 @@ public class Enemy : MonoBehaviour
             }
             gameObject.layer = 12;
             nav.enabled = false;
-            reactVec = reactVec.normalized;
-            reactVec += Vector3.up;
 
-            rigid.AddForce(reactVec * 5, ForceMode.Impulse);
             chaseStart = false;
+            GameManager.instance.PkillCount++;
+            GameManager.instance.GetExp();
             yield return new WaitForSeconds(3.0f);
             gameObject.SetActive(false);
-
             StopAllCoroutines();
         }
     }
+
+
+    IEnumerator IsHit()
+    {
+        isHit = true;
+        yield return new WaitForSeconds(0.75f);
+        isHit = false;
+    }
+
 }
