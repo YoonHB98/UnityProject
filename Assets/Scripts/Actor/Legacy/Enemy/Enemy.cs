@@ -57,6 +57,9 @@ public class Enemy : MonoBehaviour
 
     public void Init(SpawnData spawnData)
     {
+        Vector3 position = transform.position;
+        position.y = 0.08333397f;
+        transform.position = position;
         speed = spawnData.speed;
         nav.speed = speed;
         maxHp = spawnData.health;
@@ -232,6 +235,15 @@ public class Enemy : MonoBehaviour
         reactVec = reactVec.normalized;
         StartCoroutine(IsHit());
 
+        // 넉백 시작 시 다른 적과의 충돌 무시
+        foreach (Enemy enemy in FindObjectsOfType<Enemy>())
+        {
+            if (enemy != this)
+            {
+                Physics.IgnoreCollision(GetComponent<Collider>(), enemy.GetComponent<Collider>(), true);
+            }
+        }
+
         rigid.AddForce(reactVec * knockbackPower, ForceMode.Impulse);
         foreach (MeshRenderer mesh in meshes)
         {
@@ -240,12 +252,13 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         if (curHp > 0)
         {
-
             foreach (MeshRenderer mesh in meshes)
             {
                 mesh.material.color = Color.white;
             }
-        }else{
+        }
+        else
+        {
             foreach (MeshRenderer mesh in meshes)
             {
                 mesh.material.color = Color.gray;
@@ -257,16 +270,32 @@ public class Enemy : MonoBehaviour
             GameManager.instance.PkillCount++;
             GameManager.instance.GetExp();
             yield return new WaitForSeconds(3.0f);
+            isHit = false;
+            Vector3 position = transform.position;
+            position.y = 0.08333397f;
+            transform.position = position;
+            rigid.velocity = Vector3.zero;
+            rigid.angularVelocity = Vector3.zero;
             gameObject.SetActive(false);
             StopAllCoroutines();
         }
+
+        // 넉백 끝난 후 다시 충돌 활성화
+        foreach (Enemy enemy in FindObjectsOfType<Enemy>())
+        {
+            if (enemy != this)
+            {
+                Physics.IgnoreCollision(GetComponent<Collider>(), enemy.GetComponent<Collider>(), false);
+            }
+        }
     }
+
 
 
     IEnumerator IsHit()
     {
         isHit = true;
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.5f);
         isHit = false;
     }
 
