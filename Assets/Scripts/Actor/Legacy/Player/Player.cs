@@ -13,6 +13,7 @@ public class Player : DefaultActor
     public Camera followCamera;
     public Scanner scanner;
 
+    bool isBossAtk;
     //jump
     bool jDown;
     bool isJump;
@@ -52,7 +53,7 @@ public class Player : DefaultActor
         sDown2 = Input.GetButtonDown("Swap2");
         fDown = Input.GetButton("Fire1");
 
-        if(hAxis == 0 && vAxis == 0)
+        if(hAxis == 0 && vAxis == 0 && !isBossAtk)
         {
             rigid.velocity = Vector3.zero;
         }
@@ -73,8 +74,10 @@ public class Player : DefaultActor
         //{
         //    rigid.velocity = rigid.velocity.normalized * _speed;
         //}
-
-        rigid.velocity = moveVec * _speed;
+        if(!isBossAtk)
+        {
+            rigid.velocity = moveVec * _speed;
+        }
 
         //transform.position += moveVec * _speed * Time.deltaTime;
 
@@ -261,7 +264,7 @@ public class Player : DefaultActor
                 Bullet enemyBullet = other.GetComponent<Bullet>();
                 _hp -= enemyBullet.damage;
 
-                bool isBossAtk = other.name == "Boss Melee Area";
+                isBossAtk = other.name == "Boss Melee Area";
                 StartCoroutine(OnDamage(isBossAtk));
             }
         }
