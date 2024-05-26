@@ -8,8 +8,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Header("# Game Object #")]
+    public bool isLive;
     public Player player;
     public GameObject dummy;
+    public LevelUp uiLevelUp;
     public Poolmanager pool;
     SceneChangeEffect fade;
     public GameObject pauseOverlay;
@@ -57,11 +59,18 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         fade = FindObjectOfType<SceneChangeEffect>();
+
+        PcurHp = PmaxHp;
+        uiLevelUp.Select(0);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isLive)
+        {
+            return;
+        }
         gameTime += Time.deltaTime;
         if (gameTime > maxGameTime)
         {
@@ -168,10 +177,23 @@ public class GameManager : MonoBehaviour
     {
         exp++;
 
-        if (exp >= nextExp[Plevel])
+        if (exp >= nextExp[Mathf.Min(level, nextExp.Length-1)])
         {
             Plevel++;
             exp = exp - nextExp[Plevel - 1];
+            uiLevelUp.Show();
         }
+    }
+
+    public void Stop()
+    {
+        isLive = false;
+        Time.timeScale = 0;
+    }
+
+    public void Resume()
+    {
+        isLive = true;
+        Time.timeScale = 1;
     }
 }

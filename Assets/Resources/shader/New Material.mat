@@ -67,7 +67,7 @@ Material:
     m_Floats:
     - _Alpha: 1
     - _AlphaMultiplier: 0
-    - _Border: 2.13168
+    - _Border: 6.8983874
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -87,7 +87,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _AreaColor: {r: 1, g: 0, b: 0, a: 1}
-    - _Center: {r: -4.187998, g: 0.00000023841858, b: -244.52992, a: 0}
+    - _Center: {r: 36.717827, g: -0.000008583069, b: 21.233265, a: 0}
     - _Color: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

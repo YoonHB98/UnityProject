@@ -13,6 +13,8 @@ public class ItemSurvival : MonoBehaviour
 
     Image icon;
     TMP_Text textLevel;
+    TMP_Text textName;
+    TMP_Text textDesc;
 
     private void Awake()
     {
@@ -20,13 +22,33 @@ public class ItemSurvival : MonoBehaviour
         icon.sprite = data.itemIcon;
 
         TMP_Text[] texts = GetComponentsInChildren<TMP_Text>();
-        textLevel = texts[0];
+        textLevel = texts[0]; // 순서는 계층구조 순서
+        textName = texts[1];
+        textDesc = texts[2];
+        textName.text = data.itemName;
+
     }
 
-    private void LateUpdate()
+    private void OnEnable()
     {
         textLevel.text = "Lv." + (level + 1);
+
+        switch (data.itemType)
+        {
+            case ItemData.ItemType.Melee:
+            case ItemData.ItemType.Range:
+                textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100, data.counts[level]);
+                break;
+            case ItemData.ItemType.Glove:
+            case ItemData.ItemType.Shoe:
+                textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100);
+                break;
+            default:
+                textDesc.text = string.Format(data.itemDesc);
+                break;
+        }
     }
+
 
     public void OnClick()
     {
@@ -39,7 +61,9 @@ public class ItemSurvival : MonoBehaviour
                     GameObject newWeapon = new GameObject();
                     weapon = newWeapon.AddComponent<WeaponSurvival>();
                     weapon.Init(data);
-                }else{
+                }
+                else
+                {
                     float nextDamage = data.baseDamage;
                     int nextCount = data.baseCount;
 
@@ -51,12 +75,13 @@ public class ItemSurvival : MonoBehaviour
                 break;
             case ItemData.ItemType.Glove:
             case ItemData.ItemType.Shoe:
-                if(level == 0)
+                if (level == 0)
                 {
                     GameObject newGear = new GameObject();
                     gear = newGear.AddComponent<Gear>();
                     gear.Init(data);
-                }else
+                }
+                else
                 {
                     float nextRate = data.damages[level];
                     gear.LevelUp(nextRate);

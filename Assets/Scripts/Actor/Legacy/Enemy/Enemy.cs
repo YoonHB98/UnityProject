@@ -68,6 +68,10 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.isLive == false)
+        {
+            return;
+        }
         if (isDead)
         {
             StopAllCoroutines();
@@ -185,6 +189,10 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.instance.isLive == false)
+        {
+            return;
+        }
         Targerting();
         if (!isAttack)
         {

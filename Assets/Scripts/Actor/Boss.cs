@@ -27,6 +27,10 @@ public class Boss : Enemy
 
     private void Update()
     {
+        if (GameManager.instance.isLive == false)
+        {
+            return;
+        }
         if (isDead)
         {
             StopAllCoroutines();

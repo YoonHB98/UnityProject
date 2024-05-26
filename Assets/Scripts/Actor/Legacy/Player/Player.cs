@@ -175,6 +175,10 @@ public class Player : DefaultActor
     // Update is called once per frame
     private void Update()
     {
+        if (GameManager.instance.isLive == false)
+        {
+            return;
+        }
         //bool paused = GameManager.instance.GetisPaused();
         //if(paused)
         //{
