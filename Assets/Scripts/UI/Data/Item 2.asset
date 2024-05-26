@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecfaf2264f38a4d4fb55f30bce3247db, type: 3}
   m_Name: Item 2
   m_EditorClassIdentifier: 
-  itemType: 3
+  itemType: 2
   itemId: 2
-  itemName: "\uC2E0\uBC1C"
+  itemName: "\uC7A5\uAC11"
   itemDesc: 
   itemIcon: {fileID: 21300000, guid: 2f9d2ab6caa3d224b902068df21a7cea, type: 3}
   baseDamage: 3
