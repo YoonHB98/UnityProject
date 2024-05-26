@@ -53,7 +53,7 @@ public class Player : DefaultActor
         sDown2 = Input.GetButtonDown("Swap2");
         fDown = Input.GetButton("Fire1");
 
-        if(hAxis == 0 && vAxis == 0 && !isBossAtk)
+        if(hAxis == 0 && vAxis == 0 && isBossAtk == false)
         {
             rigid.velocity = Vector3.zero;
         }
@@ -74,7 +74,7 @@ public class Player : DefaultActor
         //{
         //    rigid.velocity = rigid.velocity.normalized * _speed;
         //}
-        if(!isBossAtk)
+        if(isBossAtk == false)
         {
             rigid.velocity = moveVec * _speed;
         }
@@ -278,7 +278,7 @@ public class Player : DefaultActor
             mesh.material.color = Color.red;
         }
 
-        if (isBossAtk)
+        if (isBossAtk == true)
         {
             rigid.AddForce(transform.forward * -25, ForceMode.Impulse);
         }
@@ -290,10 +290,11 @@ public class Player : DefaultActor
             mesh.material.color = Color.white;
         }
 
-        if (isBossAtk)
+        if (isBossAtk == true)
         {
             rigid.velocity = Vector3.zero;
             isDamage = false;
+            this.isBossAtk = false;
         }
     }
 
