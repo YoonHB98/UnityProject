@@ -303,6 +303,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: e89c261ba99718f4dbf91cfdab543ee6, type: 2}
   level: 0
   weapon: {fileID: 0}
+  gear: {fileID: 0}
 --- !u!114 &85089584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,7 +917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &235651879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3143,9 +3144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80fda1066280af24f92a919af51137b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: e89c261ba99718f4dbf91cfdab543ee6, type: 2}
+  data: {fileID: 11400000, guid: fa817c4a912eded4584ad8973f412a09, type: 2}
   level: 0
   weapon: {fileID: 0}
+  gear: {fileID: 0}
 --- !u!114 &1224967484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3785,13 +3787,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345355507}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!114 &1345355511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5611,6 +5613,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: e89c261ba99718f4dbf91cfdab543ee6, type: 2}
   level: 0
   weapon: {fileID: 0}
+  gear: {fileID: 0}
 --- !u!114 &2041244499
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Item 2
   m_EditorClassIdentifier: 
   itemType: 3
-  itemId: 1
+  itemId: 2
   itemName: "\uC2E0\uBC1C"
   itemDesc: 
   itemIcon: {fileID: 21300000, guid: 2f9d2ab6caa3d224b902068df21a7cea, type: 3}
   baseDamage: 3
   baseCount: 3
   damages:
+  - 0.1
+  - 0.2
   - 0.35
-  - 0.7
-  - 1
-  - 1.4
-  - 2
-  counts: 0100000001000000020000000300000004000000
-  projectile: {fileID: 8952389973678387162, guid: dd5ed75ad36348d44bc991720a7717b2, type: 3}
+  - 0.5
+  - 0.75
+  counts: 0000000000000000000000000000000000000000
+  projectile: {fileID: 0}

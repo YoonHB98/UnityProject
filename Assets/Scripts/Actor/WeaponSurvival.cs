@@ -11,6 +11,7 @@ public class WeaponSurvival : MonoBehaviour
     public int count;
     public float speed;
     Player player;
+    GameObject dummy;
 
     float timer;
 
@@ -32,6 +33,7 @@ public class WeaponSurvival : MonoBehaviour
             case 0:
                 transform.position = GameManager.instance.player.transform.position;
                 transform.Rotate(Vector3.up * speed * Time.deltaTime);
+
                 break;
 
             default:
@@ -60,14 +62,17 @@ public class WeaponSurvival : MonoBehaviour
         {
             Batch();
         }
+
+        dummy.BroadcastMessage("ApplyGear",SendMessageOptions.DontRequireReceiver);
     }
 
     public void Init(ItemData data)
     {
         //basic info
         player = GameManager.instance.player;
+        dummy = GameManager.instance.dummy;
         name = "Weapon" + data.itemId;
-        transform.parent = player.transform;
+        transform.parent = GameManager.instance.dummy.transform;
         transform.localPosition = Vector3.zero;
 
         //property info
@@ -95,6 +100,7 @@ public class WeaponSurvival : MonoBehaviour
                 break;
         }
 
+        dummy.BroadcastMessage("ApplyGear", SendMessageOptions.DontRequireReceiver);
     }
 
     private void Batch()

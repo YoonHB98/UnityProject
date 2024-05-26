@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     [Header("# Game Object #")]
     public Player player;
+    public GameObject dummy;
     public Poolmanager pool;
     SceneChangeEffect fade;
     public GameObject pauseOverlay;
