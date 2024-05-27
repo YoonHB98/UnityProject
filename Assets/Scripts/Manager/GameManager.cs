@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour
     public PlayLevel _playLevel;
 
     [Header("# Player Info #")]
-    public int PmaxHp = 100;
-    public int PcurHp;
+    public float PmaxHp = 100;
+    public float PcurHp;
     public int Plevel;
     public int PkillCount;
     public int exp;
@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
         MainMenuLevel,
         CutSceneLevel,
         HomeTownLevel,
+        BossTest,
         Stage1Level,
         Stage2Level,
         Stage3Level
@@ -45,14 +46,9 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-        {
+
             instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+
 
     }
 
@@ -150,22 +146,7 @@ public class GameManager : MonoBehaviour
     public void TogglePause()
     {
 
-        if (pauseOverlay == null)
-        {
-            Debug.LogWarning("No GameObjects with tag 'PauseOverlay' found.");
-            return;
-        }else if(_playLevel == PlayLevel.MainMenuLevel || _playLevel == PlayLevel.CutSceneLevel)
-        {
-            return;
-        }
 
-        isPaused = !isPaused;
-        pauseOverlay.SetActive(isPaused);
-        //일시정지 상태에 따라 Time.timeScale 변경
-
-
-
-        Time.timeScale = isPaused ? 0 : 1;
     }
 
     public bool GetisPaused()

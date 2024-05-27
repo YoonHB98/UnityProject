@@ -15,9 +15,9 @@ public class CutScene : MonoBehaviour
 
     string[] sentences = new string[]
     {
-        "1st",
-        "2nd",
-        "3rd"
+        "",
+        "",
+        ""
     };
     // 대사의 인덱스
     int index = 0;
@@ -55,7 +55,7 @@ public class CutScene : MonoBehaviour
             }
             else
             {
-                GameManager.instance.ChangeLevel("HomeTownLevel");
+                GameManager.instance.ChangeLevel("BossTest");
             }
             isClicked = false;
         }

@@ -362,6 +362,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2011644423}
+        m_TargetAssemblyTypeName: LevelUp, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &85089585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1825,6 +1837,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2011644423}
+        m_TargetAssemblyTypeName: LevelUp, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &609655910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2737,8 +2761,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfbfc36e74061b4d86aa55dbd82af37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLive: 1
   player: {fileID: 1998929104}
   dummy: {fileID: 958187992}
+  uiLevelUp: {fileID: 2011644423}
   pool: {fileID: 1483767778}
   pauseOverlay: {fileID: 0}
   gameTime: 0
@@ -2750,7 +2776,7 @@ MonoBehaviour:
   Plevel: 0
   PkillCount: 0
   exp: 0
-  nextExp: 03000000050000000a0000006400000096000000d20000001801000068010000c201000026020000940200000c0300008e0300001a040000b004000050050000fa050000ae0600006c0700003408000006090000e2090000c80a0000b80b0000b20c0000b60d0000c40e0000dc0f0000fe1000002a12000060130000a0140000ea1500003e1700009c180000041a0000761b0000f21c0000781e000008200000a221000046230000f4240000ac2600006e2800003a2a0000102c0000f02d0000da2f0000ce310000cc330000d4350000e6370000023a0000283c0000583e000092400000d6420000244500007c470000de4900004a4c0000c04e000040510000ca5300005e560000fc580000a45b0000565e000012610000d8630000a866000082690000666c0000546f00004c7200004e7500005a780000707b0000907e0000ba810000ee8400002c880000748b0000c68e00002292000088950000f8980000729c0000f69f000084a300001ca70000beaa00006aae000020b20000e0b50000aab900007ebd00005cc1000044c5000036c9000032cd000038d1000048d5000062d9000086dd0000b4e10000ece500002eea00007aee0000d0f2000030f700009afb00000e0001008c04010014090100a60d010042120100e8160100981b01005220010016250100e4290100bc2e01009e3301008a380100803d0100804201008a4701009e4c0100bc510100e4560100
+  nextExp: 03000000050000000a000000140000001e00000028000000320000003c00000046000000500000005a000000640000006e00000078000000820000008c00000096000000a0000000aa000000b4000000be000000c8000000c80a0000b80b0000b20c0000b60d0000c40e0000dc0f0000fe1000002a12000060130000a0140000ea1500003e1700009c180000041a0000761b0000f21c0000781e000008200000a221000046230000f4240000ac2600006e2800003a2a0000102c0000f02d0000da2f0000ce310000cc330000d4350000e6370000023a0000283c0000583e000092400000d6420000244500007c470000de4900004a4c0000c04e000040510000ca5300005e560000fc580000a45b0000565e000012610000d8630000a866000082690000666c0000546f00004c7200004e7500005a780000707b0000907e0000ba810000ee8400002c880000748b0000c68e00002292000088950000f8980000729c0000f69f000084a300001ca70000beaa00006aae000020b20000e0b50000aab900007ebd00005cc1000044c5000036c9000032cd000038d1000048d5000062d9000086dd0000b4e10000ece500002eea00007aee0000d0f2000030f700009afb00000e0001008c04010014090100a60d010042120100e8160100981b01005220010016250100e4290100bc2e01009e3301008a380100803d0100804201008a4701009e4c0100bc510100e4560100
 --- !u!1 &880131993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3219,7 +3245,7 @@ GameObject:
   - component: {fileID: 1002218662}
   - component: {fileID: 1002218661}
   m_Layer: 5
-  m_Name: Item0 (3)
+  m_Name: Item3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3260,7 +3286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80fda1066280af24f92a919af51137b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: e89c261ba99718f4dbf91cfdab543ee6, type: 2}
+  data: {fileID: 11400000, guid: d7fd3c44812f5fe4494fe15256cffb4b, type: 2}
   level: 0
   weapon: {fileID: 0}
   gear: {fileID: 0}
@@ -3311,6 +3337,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1002218661}
         m_TargetAssemblyTypeName: ItemSurvival, Assembly-CSharp
         m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2011644423}
+        m_TargetAssemblyTypeName: LevelUp, Assembly-CSharp
+        m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3895,7 +3933,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143876752}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3904,11 +3942,11 @@ RectTransform:
   - {fileID: 609655907}
   - {fileID: 1510219160}
   - {fileID: 1002218660}
-  m_Father: {fileID: 1940544707}
+  m_Father: {fileID: 2011644420}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -553.65, y: 128}
+  m_AnchoredPosition: {x: -583.65, y: 128}
   m_SizeDelta: {x: 812.6942, y: 641.5526}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1143876754
@@ -5338,6 +5376,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1510219161}
         m_TargetAssemblyTypeName: ItemSurvival, Assembly-CSharp
         m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2011644423}
+        m_TargetAssemblyTypeName: LevelUp, Assembly-CSharp
+        m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6930,7 +6980,6 @@ RectTransform:
   - {fileID: 1495188214}
   - {fileID: 1482389786}
   - {fileID: 1091906738}
-  - {fileID: 1143876753}
   - {fileID: 2011644420}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7118,13 +7167,14 @@ GameObject:
   - component: {fileID: 2011644420}
   - component: {fileID: 2011644422}
   - component: {fileID: 2011644421}
+  - component: {fileID: 2011644423}
   m_Layer: 5
   m_Name: LevelUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2011644420
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7134,9 +7184,10 @@ RectTransform:
   m_GameObject: {fileID: 2011644419}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1143876753}
   m_Father: {fileID: 1940544707}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7182,6 +7233,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011644419}
   m_CullTransparentMesh: 1
+--- !u!114 &2011644423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011644419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db8949c26a308645b9dad168a56bd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2031453033
 GameObject:
   m_ObjectHideFlags: 0

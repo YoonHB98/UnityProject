@@ -57,7 +57,7 @@ public class LevelUp : MonoBehaviour
 
                 if (item.level == item.data.damages.Length)
                 {
-                    items[4].gameObject.SetActive(true);
+                    
                 }
                 else 
                 {

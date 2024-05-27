@@ -274,6 +274,28 @@ public class Player : DefaultActor
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if ((!GameManager.instance.isLive))
+        {
+            return;
+
+        }
+        if(collision.gameObject.tag != "Enemy")
+        {
+            return;
+        }
+        GameManager.instance.PcurHp -= Time.deltaTime * 10;
+
+        //if (GameManager.instance.PcurHp < 0)
+        //{
+        //    for (int index = 2; index < transform.childCount; index++)
+        //    {
+        //        transform.GetChild(index).gameObject.SetActive(false);
+        //    }
+        //}
+    }
+
     IEnumerator OnDamage(bool isBossAtk)
     {
         isDamage = true;
